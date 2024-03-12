@@ -1,0 +1,19 @@
+{
+  "name": "nodejs_ecommerce_be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NMHieu27/NodeJS_Ecommerce_BE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NMHieu27/NodeJS_Ecommerce_BE/issues"
+  },
+  "homepage": "https://github.com/NMHieu27/NodeJS_Ecommerce_BE#readme"
+}
