@@ -8,10 +8,11 @@ const authMiddleware = asyncHandler(async (req, res, next) => {
         console.log(token);
         try{
             if(token){
+                // Từ token + serect jwt phân giải ngược lại phần tử tạo nên chuỗi jwt, trước đó đã dùng id user + serect tạo nên chuỗi jwt
                 const decoded = jwt.verify(token,process.env.JWT_SECRET);
                 console.log(decoded);
                 const user = await User.findById(decoded?.id);
-                res.user = user;
+                req.user = user;
                 next();
             }
         }
@@ -23,4 +24,13 @@ const authMiddleware = asyncHandler(async (req, res, next) => {
         throw new Error('There is no token attached to the header');
     }
 })
-module.exports ={authMiddleware};
+const isAdmin = asyncHandler(async (req, res, next) =>{
+    const {role} = req?.user;
+    if(role === 'admin'){
+        next();
+    }
+    else{
+        throw new Error('You are not an administrator ');
+    }
+});
+module.exports ={authMiddleware, isAdmin};
